@@ -1,7 +1,8 @@
 <?php
 
 function inc($filename) {
-    if (is_file($filename.'.php')) {
+	$filename = $_SERVER['DOCUMENT_ROOT'].'/'.str_replace('.', '/', $filename).'.php';
+    if (is_file($filename)) {
         ob_start();
         include $filename;
         return ob_get_clean();
